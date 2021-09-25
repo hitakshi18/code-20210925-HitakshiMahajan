@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CarsModule } from './cars/cars.module';
-import { CarModule } from './car/car.module';
+import { CarModule} from './car/car.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [CarsModule, CarModule],
+  imports: [ GraphQLModule.forRoot({
+        autoSchemaFile: 'schema.gql'
+      }), CarModule,  MongooseModule.forRoot('mongodb://localhost/carsCatalog')],
   controllers: [AppController],
   providers: [AppService],
 })

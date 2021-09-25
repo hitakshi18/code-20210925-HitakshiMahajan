@@ -7,7 +7,7 @@ export class CarResolver {
     constructor(private readonly carService: CarService) {}
     
     @Query(( ) => [Car])
-    getCarsList()  {
+    async getCarsList()  {
         return this.carService.findAll();
     }
 
