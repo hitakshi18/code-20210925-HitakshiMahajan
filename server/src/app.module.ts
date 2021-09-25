@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [ GraphQLModule.forRoot({
         autoSchemaFile: 'schema.gql'
-      }), CarModule,  MongooseModule.forRoot('mongodb://localhost/carsCatalog')],
+      }), CarModule,  MongooseModule.forRoot('mongodb+srv://carDealer:carDealer@carscatalogcluster.q6pwh.mongodb.net/Cars?retryWrites=true&w=majority')],
   controllers: [AppController],
   providers: [AppService],
 })
