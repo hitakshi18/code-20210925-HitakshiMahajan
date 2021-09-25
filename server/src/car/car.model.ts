@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import * as mongoose from 'mongoose';
 
-export const CarsSchema = new mongoose.Schema({
+export const CarModel = new mongoose.Schema({
     carId: String,
     carPrice: Number,
     carMake: String,
@@ -9,7 +9,7 @@ export const CarsSchema = new mongoose.Schema({
 })
 
 @ObjectType()
-export class Cars {
+export class Car {
     @Field()
     carId: string;
 

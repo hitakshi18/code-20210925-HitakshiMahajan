@@ -1,4 +1,14 @@
-import { Resolver } from '@nestjs/graphql';
+import { Resolver, Query } from '@nestjs/graphql';
+import { Car } from './car.model';
+import { CarService }  from './car.service';
 
-@Resolver()
-export class CarResolver {}
+@Resolver(() => Car)
+export class CarResolver {
+    constructor(private readonly carService: CarService) {}
+    
+    @Query(( ) => [Car])
+    getCarsList()  {
+        return this.carService.findAll();
+    }
+
+}
