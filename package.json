@@ -1,0 +1,24 @@
+{
+  "name": "code-20210925-hitakshimahajan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"concurrently \"cd server && yarn start\" \"cd client && yarn start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitakshi18/code-20210925-HitakshiMahajan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hitakshi18/code-20210925-HitakshiMahajan/issues"
+  },
+  "homepage": "https://github.com/hitakshi18/code-20210925-HitakshiMahajan#readme",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
