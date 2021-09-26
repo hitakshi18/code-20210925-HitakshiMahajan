@@ -6,7 +6,8 @@ export const CarModel = new mongoose.Schema({
     carPrice: Number,
     carMake: String,
     carModel: String,
-    carImageUrl: String
+    carImageUrl: String,
+    carDescription: String
 })
 
 @ObjectType()
@@ -25,5 +26,8 @@ export class Car {
 
     @Field( { nullable: true })
     carImageUrl: string
+
+    @Field( { nullable: true })
+    carDescription: string
 
 }
