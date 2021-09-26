@@ -15,7 +15,9 @@ export interface CarInterface {
 }
 
 function App() : JSX.Element {
+  // state to save the id of the car visible on the right side of the screen
   const [ selectedCarId, setSelectedCarId] = useState<string>('');
+  // custom hook to get data for a single car using carId from the server
   var carViewBoxData: CarInterface | undefined = useCarViewData(selectedCarId) 
 
   return (
