@@ -13,5 +13,9 @@ export class CarService {
     async findAll(): Promise<Car[]> {
         return this.carModel.find().lean();
     }
+
+    async findOne(id: string): Promise<Car> {
+        return await this.carModel.findOne({ carId: id });
+    }
   
 }
