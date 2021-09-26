@@ -4,16 +4,22 @@
 }
 
 .carListItem {
-    border: solid 2px darkolivegreen;
+    border: solid 3px  rgb(95, 130, 133);;
     margin-bottom: 5rem;
     width:30rem;
-    height:20rem;
+    height:18rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .highlight {
     outline: none;
     border-color: #9ecaed;
     box-shadow: 0 0 20px 0 #9ecaed;
-    
+}
+
+.carListTitleText {
+    padding-top:1rem;
+    font-weight: bold;
+    color: cadetblue;
 }
