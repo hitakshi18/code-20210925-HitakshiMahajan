@@ -1,6 +1,6 @@
-import React , {}from 'react';
-import { Card, Button } from 'react-bootstrap';
-import { CarInterface } from '../../../App'
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import { CarInterface } from '../../../App';
 import './carListItem.css'
 
 interface  CarListItemProps {
