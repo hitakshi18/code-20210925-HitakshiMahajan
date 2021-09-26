@@ -1,21 +1,22 @@
 import React , { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CARS_LIST } from './queries'
-import { CarListItem } from '../../presentational/CarListItem'
+import { CarListItem }  from '../../presentational/CarListItem'
 import { CarInterface } from '../../../App'
 
 interface ListWrapperProps {
     sendCarIdToParent: (id: string) => void;
-    // setParentCarViewBoxData: ( car: CarInterface )=> void;
-    
     highlightedCar: string | undefined;
 }
+interface GetCarsListData {
+    carsList: CarInterface[]
+}
 
-export const ListWrapper = ( { highlightedCar, sendCarIdToParent }:ListWrapperProps ) => {
+export const ListWrapper = ( { highlightedCar, sendCarIdToParent }: ListWrapperProps ): JSX.Element => {
     const [ carsList, setCarsList ] = useState<CarInterface[]>([]); 
     const [ apiError, setApiError ] = useState<string>('');
     
-    useQuery(GET_CARS_LIST, {
+    useQuery <GetCarsListData>(GET_CARS_LIST, {
         onCompleted: ({ carsList }) => {
             if( carsList.length>0 ){
                 setCarsList(carsList);
@@ -23,7 +24,7 @@ export const ListWrapper = ( { highlightedCar, sendCarIdToParent }:ListWrapperPr
             }
         },
         onError: (err) => {
-          setApiError(err.message);
+          setApiError("Error occured on the server side. Unable to fetch data");
         },
         fetchPolicy: 'no-cache'
     });
@@ -35,9 +36,8 @@ export const ListWrapper = ( { highlightedCar, sendCarIdToParent }:ListWrapperPr
                     <CarListItem carListItemData={carData} highlightedCar={highlightedCar} sendCarIdToParent={sendCarIdToParent}/>
                 ) )
             }
-            { apiError && <div>{apiError}</div> }
+            { apiError && <h4 className="text-center">{apiError}</h4> }
         </div>
-       
     )  
 
 }
