@@ -5,14 +5,15 @@ import './carListItem.css'
 
 interface  CarListItemProps {
     carListItemData: CarInterface;
-    highlightedCar: string | undefined
+    highlightedCar: string | undefined;
+    sendCarIdToParent: (id: string) => void
 }
 
-export const CarListItem = ( { carListItemData, highlightedCar }: CarListItemProps ) : JSX.Element => {
+export const CarListItem = ( { carListItemData, highlightedCar, sendCarIdToParent }: CarListItemProps ) : JSX.Element => {
     let highlight =  highlightedCar === carListItemData.carId ? 'highlight' : null;
     
     return (
-      <Card className={`carListItem ${highlight}`} onClick={()=>{}}>
+      <Card className={`carListItem ${highlight}`} onClick={ ()=>{ sendCarIdToParent(carListItemData.carId) }}>
         <Card.Img variant="top" src={carListItemData.carImageUrl} className="carImage" />
         <Card.Body>
             <Card.Title>{`${carListItemData.carMake} - ${carListItemData.carModel}`}</Card.Title>

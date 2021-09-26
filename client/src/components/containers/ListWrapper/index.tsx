@@ -1,15 +1,17 @@
 import React , { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CARS_LIST } from './queries'
-import { CarsList } from '../CarsList';
+import { CarListItem } from '../../presentational/CarListItem'
 import { CarInterface } from '../../../App'
 
 interface ListWrapperProps {
-    setParentCarViewBoxData: ( car: CarInterface )=> void;
+    sendCarIdToParent: (id: string) => void;
+    // setParentCarViewBoxData: ( car: CarInterface )=> void;
+    
     highlightedCar: string | undefined;
 }
 
-export const ListWrapper = ( { setParentCarViewBoxData, highlightedCar }:ListWrapperProps ) => {
+export const ListWrapper = ( { highlightedCar, sendCarIdToParent }:ListWrapperProps ) => {
     const [ carsList, setCarsList ] = useState<CarInterface[]>([]); 
     const [ apiError, setApiError ] = useState<string>('');
     
@@ -17,7 +19,7 @@ export const ListWrapper = ( { setParentCarViewBoxData, highlightedCar }:ListWra
         onCompleted: ({ carsList }) => {
             if( carsList.length>0 ){
                 setCarsList(carsList);
-                setParentCarViewBoxData(carsList[0])
+                sendCarIdToParent(carsList[0]?.carId)
             }
         },
         onError: (err) => {
@@ -28,13 +30,12 @@ export const ListWrapper = ( { setParentCarViewBoxData, highlightedCar }:ListWra
 
     return (
         <div>
-            { carsList.length > 0 ?
-               <CarsList carListData={carsList} highlightedCar={highlightedCar}/> :
-               <div>test</div>
+            { carsList.length > 0 &&
+                carsList.map( (carData : CarInterface) => (
+                    <CarListItem carListItemData={carData} highlightedCar={highlightedCar} sendCarIdToParent={sendCarIdToParent}/>
+                ) )
             }
-            {
-                apiError && <div>{apiError}</div>
-            }
+            { apiError && <div>{apiError}</div> }
         </div>
        
     )  
