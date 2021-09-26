@@ -17,10 +17,9 @@ export const CarListItem = ( { carListItemData, highlightedCar, sendCarIdToParen
       <Card className={`carListItem ${highlight}`} onClick={ ()=>{ sendCarIdToParent(carListItemData.carId) }}>
         <Card.Img variant="top" src={carListItemData.carImageUrl} className="carImage" />
         <Card.Body>
-            <Card.Title>{`${carListItemData.carMake} - ${carListItemData.carModel}`}</Card.Title>
-            <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+            <Card.Title className="carListTitleText">{`${carListItemData.carMake} - ${carListItemData.carModel}`}</Card.Title>
+            <Card.Text >
+                Price - Rs {carListItemData.carPrice}
             </Card.Text>
         </Card.Body>
       </Card>

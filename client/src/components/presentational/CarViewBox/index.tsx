@@ -18,7 +18,7 @@ export const CarViewBox = ( { carData }: CarViewBoxProps ) : JSX.Element => {
               {carData.carDescription}
               </Card.Text>
               <Card.Text>
-              Price - {carData.carPrice}
+              Price - Rs {carData.carPrice}
               </Card.Text>
             </Card.Body>
       </Card>
