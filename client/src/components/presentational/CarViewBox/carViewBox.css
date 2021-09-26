@@ -1,0 +1,25 @@
+.carViewBox {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 25px 0 #9ecaed;
+    border-radius: 10px;
+    width: 52rem;
+    height:78vh;
+}
+
+.carViewImage {
+    height: 25rem;
+    width:80%;
+    margin-top:5rem;
+}
+
+.carViewText{
+   text-align: justify;
+   padding: 2rem;
+}
+
+.carViewTitleText{
+    padding-top:1rem;
+    font-weight: bold;
+    color: cadetblue;
+}
